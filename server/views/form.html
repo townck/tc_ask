@@ -36,7 +36,7 @@
 				<h4 class="fb f14 cGray ask_quiz_title">问题标题</h4>
 				<div class="ask_item_main_quiz">
 					<div class="ask_quiz_pr">
-						<input type="text" onclick="" value="<%=doc.title||''%>" id="title" name="title" class="ui_input ask_item_main_quiz_input js_inputGap jstitle" style="border-color: rgb(204, 204, 204);">
+						<input type="text" onclick="" value="<%=question.title||''%>" id="title" name="title" class="ui_input ask_item_main_quiz_input js_inputGap jstitle" style="border-color: rgb(204, 204, 204);">
 						<div class="ask_quiz_pr_main">
 							<div class="pr">
 								<p>
@@ -64,7 +64,7 @@
 					<div class="mod_edittext">
 						<div class="ask_append ask_quiz_pr">
 							
-							<textarea style="width:668px;height:100px;border-color: rgb(204, 204, 204);" value="" id="content" name="content" class="auto_text ui_textarea ask_item_main_quiz_textarea jscontent"><%=doc.content||''%></textarea>
+							<textarea style="width:668px;height:100px;border-color: rgb(204, 204, 204);" value="" id="content" name="content" class="auto_text ui_textarea ask_item_main_quiz_textarea jscontent"><%=question.content||''%></textarea>
 							
 							<div class="ask_quiz_pr_main">
 								<div class="pr">
@@ -96,7 +96,7 @@
 					<div class="tag-box">
 						<dl class="tag-list clearfix">
 						</dl>
-						<input class="ui3_input tag-input js-tag-input" value="<%=doc.tag||''%>" type="text" id="tag" name="tag" placeholder="输入主题标签，空格键分开">
+						<input class="ui3_input tag-input js-tag-input" value="<%=question.tag||''%>" type="text" id="tag" name="tag" placeholder="输入主题标签，空格键分开">
 						<ul class="recommend-list">
 						</ul>
 					</div>
