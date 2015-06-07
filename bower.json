@@ -1,0 +1,19 @@
+{
+  "name": "ask",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "junjun16818 <junjun16818@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

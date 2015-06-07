@@ -1,0 +1,56 @@
+<div class="ask_sidebar fr">
+	<div class="ask_sidebar_all f14">
+        	共 
+		<strong class="fb"><%=sidebar.qcount%></strong> 个问题，<strong class="fb"><%=sidebar.acount%></strong> 个回答
+	</div>
+    <div class="ask_sidebar_tag mt10">
+	  <h4 class="f14 fb cGray">热门标签</h4>
+		
+		<div class="ask_sidebar_tag_list">
+			<%sidebar.tags.forEach(function(tag){ %>
+			<a href="/list/all/<%=tag._id%>" class="ask_tag" data-bn-ipg="22-3-1"><strong class="ask_tag_strong"><%=tag._id%></strong></a>
+			<% }) %>
+		</div>
+		<div class="tr mt5">
+			<a title="全部问答标签" href="#" data-bn-ipg="22-0">全部问答标签</a>
+		</div>
+	</div>
+  <div class="ask_sidebar fr">
+	  <div class="ask_detail_yes">
+	    
+      </div>
+	  <div class="ask_detail_do mt20">
+	    <h4 class="f14 fb cGray">热门问题</h4>
+	    <ul class="mt5 clearfix">
+			<% sidebar.questions.forEach(function(question){ %>
+	      		<li><strong>&gt;</strong><span><a title="<%=question.title%>" href="/detail/<%=question._id%>" data-bn-ipg="21-1"><%=question.title%></a></span></li>
+		    <% }) %>
+        </ul>
+      </div>
+    
+    <div class="mb10">
+<!--	    <h3 class="bbs_txttit"><span class="fb f14 cGray">唐客旅游攻略</span></h3>-->
+	    <ul class="bbs_guidelist clearfix">
+<!--	      <li>
+	        <p> <a href="#" target="_blank" data-bn-ipg="22-1"><img src="/images/80_120.jpg?1431919693" width="80" height="120" alt="《哈利·波特》影迷指南唐客锦囊" title="《哈利·波特》影迷指南唐客锦囊" /></a> </p>
+	        <p class="bbs_guidelist_title"> <a href="#" target="_blank" title="《哈利·波特》影迷指南" data-bn-ipg="22-1">《哈利·波特》影迷指南</a> </p>
+	        <p> 864次下载 </p>
+          </li>
+	      <li>
+	        <p> <a href="#" target="_blank" data-bn-ipg="22-2"><img src="/images/80_120.jpg?1422520568" width="80" height="120" alt="爱丁堡唐客锦囊" title="爱丁堡唐客锦囊" /></a> </p>
+	        <p class="bbs_guidelist_title"> <a href="#" target="_blank" title="爱丁堡" data-bn-ipg="22-2">爱丁堡</a> </p>
+	        <p> 38995次下载 </p>
+          </li>
+          <li>
+	        <p> <a href="#" target="_blank" data-bn-ipg="22-2"><img src="/images/80_120.jpg?1422520568" width="80" height="120" alt="爱丁堡唐客锦囊" title="爱丁堡唐客锦囊" /></a> </p>
+	        <p class="bbs_guidelist_title"> <a href="#" target="_blank" title="爱丁堡" data-bn-ipg="22-2">爱丁堡</a> </p>
+	        <p> 38995次下载 </p>
+          </li>
+        </ul>-->
+<!--	    <div class="tr mt5"> <a href="#" target="_blank" data-bn-ipg="22-0">更多唐客锦囊</a> </div>-->
+    </div>
+  </div>
+    
+</div>
+<div class="clear">
+</div>

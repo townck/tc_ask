@@ -1,0 +1,215 @@
+
+<div class="askwrap">
+<div class="ask_posi ask_wrap">
+	<a href="#">唐客旅游网</a><span class="sp">></span><a href="/">唐客问答</a><span class="sp">></span><%=doc.title%>
+</div>
+<!--//.asp_posi-->
+<div class="ask_wrap">
+	<!--//.ask_top_desc-->
+    <div class="ask_top_desc ask_wrap" style="margin-top:0">
+	<h2><a href="/">唐客问答</a></h2>
+	<p>
+		<strong class="fb">欢迎来到唐客旅游网问答社区！</strong></br>韩国旅游相关的各种问题，无论你是新手上路，还是旅行专家，提出你的问题，分享你的答案，在这里让我们大家互相帮助吧！
+	</p>
+    </div>
+    <div class="ask_search ask_wrap">
+	<div class="ask_search_main">
+		<div class="ask_search_text">
+			<input id="type" name="type" type="hidden" value="index">
+			<form action="/search" method="get" id="formsearch">
+				<input id="keyword" name="q" type="text" style="width:600px;" value="" placeholder="提问前请先搜索，看看你的问题其他是否有人已经问过" class="ui_input" autocomplete="off">
+				<input type="button" value=" " onclick="if($.trim($('#keyword').val())!='' &amp;&amp; $.trim($('#keyword').val())!='提问前请先搜索，看看你的问题其他人是否已经问过'){$('#formsearch').submit();}" class="ask_button">
+			</form>
+			<div id="search_menu">
+			</div>
+		</div>
+	</div>
+	<div class="ask_askhelp_btn">
+		<a rel="nofollow" title="我要提问" href="/form"><img src="/images/ask_addask_btn.png" width="147" height="40" alt="我要提问"></a>
+	</div>
+</div>
+	
+	<% include sidebar.html %>
+
+		<div class="ask_item_main fl">
+			<div class="ask_detail_item clearfix">
+				<div class="ui_headPort fl" alt="1284074">
+					<a href="#" data-bn-ipg="7-1"><img src="<%=doc.user.poster%>" width="80" height="80" alt="lige510" title="lige510"></a>
+				</div>
+				<div class="ask_detail_content">
+					<h2 class="ask_detail_content_title qyer_spam_text_filter"><%=doc.title%></h2>
+					<div class="ask_detail_content_text qyer_spam_text_filter">
+						<%=doc.content%>
+					</div>
+					<div class="ask_detail_content_tag mt5">
+						<% doc.tag.forEach(function(tag){%>
+							<a href="/list/all/<%=tag%>" class="ask_tag" ><strong class="ask_tag_strong"><%=tag%></a></strong></a>
+						<% }) %>
+					</div>
+					<div class="dashed1px mt5">
+					</div>
+					<div class="clearfix mt10 oh">
+						<p class="fl">
+							<a href="#" > <%=doc.user.name%>  </a> | <%=doc.dateStr%>
+						</p>
+<!--						<a href="#" class="fr jsjubaoquestion" value="858432" data-bn-ipg="7-6">举报</a>-->
+					</div>
+					<div class="clearfix mt10">
+						<div class="fl">
+							<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1346345347004722" charset="utf-8"></script>
+							<!--分享代码-->
+						</div>
+						<span class="fr">
+						<input type="button" value="回答" onclick="$('#content').focus()" class="ui_btn_big jsjumptoanswer" data-bn-ipg="7-7">
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="ask_detail_comment mt20 oh">
+				<div class="ask_detail_comment_title clearfix">
+					<a name="scrollshow"></a>
+					<p class="fl fb cGray">
+						排序：
+					</p>
+					<span class="cGray">按有用</span>&nbsp;&nbsp;<a data-qid="858432" data-orderway="time" data-page="1" href="#" data-bn-ipg="8-2" class="js_getanswers">按时间</a>
+					<span class="fr">共 <%=answers.length%> 个回答</span>
+				</div>
+				
+				<%answers.forEach(function(answer){%>
+				<div class="mod_discuss clearfix jsanswerbox oh">
+					<div class="mod_discuss_face">
+						<div class="ui_headPort" alt="734348">
+							<a data-bn-ipg="8-1-1-1" href="#" width="80" height="80" class="ui_headPort_img" alt="zha__li"><img width="70" height="70" src="<%=answer.user.poster%>"/></a>
+						</div>
+					</div>
+					<div class="mod_discuss_cnt">
+						<div class="mod_discuss_cnt_triangle">
+						</div>
+						<div class="mod_discuss_box">
+							<div class="jsanswercontent">
+								<div class="mod_discuss_box_name">
+									<a data-bn-ipg="8-1-1-2" ><%=answer.user.name%></a>  | 
+	                            	<%=answer.dateStr%>
+								</div>
+								<div class="mod_discuss_box_text qyer_spam_text_filter">
+									<%-answer.content.replace(/\n/g, '<br>')%>	
+								</div>
+								<div class="mod_discuss_box_tool clearfix">
+									<div class="fr">
+										<div class="operate mr10 fl" style="display: none;">
+											<span class="fl jiathis_style_title">分享到</span>
+											<!--这里插入分享代码-->
+										</div>
+										<a href="#" class="operate jsjubaoanswer mr10" value="1517866" data-bn-ipg="8-1-1-7" style="display: none;">举报</a>
+											<%if(user.admin){%><a href="/answer/delete/<%=doc._id%>/<%=answer._id%>" onclick="return confirm('Are you sure?')">删除 </a><%}%>
+										<span class="ask_detail_pr">
+											<a href="javascript:void(0)" data-bn-ipg="8-1-1-8" class="icon_praise jsaskansweruseful like_anwser" value="<%=answer._id%>">有用 <span class="like_count"><%=answer.like?answer.like.length:0%></span></a>
+										<div class="ask_detail_pr_main" id="js_useful_tips" style="">
+											<p>
+												如果觉得回答有帮助，请点击“有用”这是对回答者最热烈的掌声。
+											</p>
+											<span alt="useful" class="js_ask_close_tip">close</span>
+										</div>
+										</span>
+									</div>
+<!--									<a data-bn-ipg="8-1-1-4" href="#" class="icon_discuss jsslideshowcomment" alt="1517866" value="0" rel="zha__li" isself="0"><span>
+									讨论
+									</span>-->
+									&nbsp;
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<%})%>
+				<a name="questionanswer" id="questionanswer" style="margin-top: -150px; position: absolute;">&nbsp;</a>
+				<h4 class="fb f14 mt20 js_tmp">添加回答</h4>
+				<div class="mod_discuss clearfix mt10">
+					<div class="mod_discuss_face ui_headPort" alt="6047093">
+						<a href="#" class="fl" data-bn-ipg="9-1"><img src="<%=user.poster%>" width="80" height="80" alt="Vinner7"></a>
+					</div>
+					<div class="mod_discuss_cnt">
+						<div class="mod_discuss_cnt_triangle">
+						</div>
+						<form action="/answers/<%=doc._id%>" id="jsaddanswer"  method="post">
+							<input type="hidden" name="qid" id="answerqid" value="858432">
+							<div class="mod_discuss_speak">
+								<div class="mod_edittext">
+									<div class="ask_append">
+										
+										<textarea class="ui_textarea auto_text" style="width:555px;height:100px;" id="content" name="content"><%=content || ''%></textarea>
+										<div class="ask_detail_pr_main js_ask_answer_tip_div" style="margin-top:12px;display:none;">
+											<p>
+												如果要补充编辑你的提问，<br>
+												请点击“<a href="#">编辑</a>”问题，或<a href="#">重新提问</a>
+											</p>
+											<span alt="answer" class="js_ask_close_tip">close</span>
+										</div>
+									</div>
+									<div class="mod_edittext_btn clearfix _jsajaxlogin">
+										<input type="button" class="ui_button fr" onclick="var rs = checkAnswerForm();if(rs == true){$('#jsaddanswer').submit();}" id="jsanswersubmit" value="回答" data-bn-ipg="9-3">
+										
+										<input class="fr ui3_input ntag-input js-tag-input" style="height:25px;" id="username" value="<%=user.name%>" type="text" name="username" placeholder="请输入临时用户名">
+										<input class="fr ui3_input ntag-input js-tag-input" style="height:25px;margin-right:10px;width:75px" id="captcha" type="text" name="captcha" placeholder="请输入验证码">
+										<img width="120" style="margin-right:10px" class="fr" src="/captcha" alt="">
+										
+<!--									
+										<p class="mod_edittext_transpond fr">
+同时转发到：
+											<label><input name="weibopublish" type="checkbox" flag="0" notoken="1" weibo="weibo" value="1" id="weibopublish" class="vm _jsweibopublis">
+											<img id="weiboimg" src="/images/logo_weibo_off.png" class="vm">
+											</label><label><input name="qqpublish" type="checkbox" checked="" flag="0" weibo="qq" value="1" id="qqpublish" class="vm _jsweibopublis">
+											<img id="qqimg" src="/images/logo_qq_on.png" class="vm">
+											</label>
+										</p>
+										-->
+										
+										<span class="jsshowanswerbyte mod_edittext_wordnb"><span id="js_content_num">0</span> /
+										<script language="javascript">
+											$('#content').keyup(function(){
+												$('#js_content_num').html($('#content').val().length)
+											})
+										</script>
+										1000 字</span>
+										<span class="icon_error ml10 jsbyteerror" style="display:none">超出字数限制</span>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+</div>
+</div>
+
+<script>
+	$('.like_anwser').click(function(){
+		var self = this
+		$.ajax({
+			url: '/like'
+			, type: 'post'
+			, data: { answer_id: $(this).attr('value') }
+			, success: function(){
+				var count = $(self).find('.like_count').html()
+				console.log(count)
+				$(self).find('.like_count').html(parseInt(count)+1)
+			}
+		})
+	})	
+</script>
+
+<script>
+	var error = '<%=error%>'
+	
+	if( error === 'captcha' ){
+		alert('验证码错误')
+		$('#captcha').focus()
+	}
+	else if( error )
+		alert('添加失败！！')
+</script>
