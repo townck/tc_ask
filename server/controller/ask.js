@@ -79,7 +79,7 @@ router.get(['/', '/search', '/list/:type', '/list/:type/:tag'], function(req, re
 })
 
 router.get('/form', function(req, res){
-	res.render('form', { doc: {}, error: '', user: req.user })
+	res.render('form', { question: {}, error: '', user: req.user })
 })
 
 router.get('/admin/login', function(req, res){
@@ -166,7 +166,7 @@ router.post('/create', function(req, res)
 	Captcha.findById(req.cookies._id, function(err, captcha)
 	{
 		if( err || !captcha || captcha.value.toUpperCase() !== req.body.captcha.toUpperCase() )
-			return res.render('form', { doc: req.body, error: 'captcha', user: req.user })
+			return res.render('form', { question: req.body, error: 'captcha', user: req.user })
 		
 		if( req.body.title && req.body.content && req.body.tag )
 		{
@@ -186,7 +186,7 @@ router.post('/create', function(req, res)
 					return res.redirect('/detail/'+req.body._id)
 				}
 				
-				res.render('form', { doc: req.body, error: true, user: req.user })
+				res.render('form', { question: req.body, error: true, user: req.user })
 			})
 		}
 	})
