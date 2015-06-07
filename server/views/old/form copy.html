@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="/stylesheets/ask.css"/>
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/ask.js"></script>
+</head>
+<body>
+<div class="ask_posi ask_wrap">
+	<a href="http://www.townck.com">唐客</a><span class="sp">></span><a href="/">唐客问答</a><span class="sp">></span>有关希斯罗机场转机
+</div>
+<!--//.asp_posi-->
+<div class="ask_wrap">
+	<div class="ask_top_detail">
+		<h2><a href="#">唐客问答</a></h2>
+		<div class="ask_search_main">
+			<div class="ask_search_text">
+				<input id="type" name="type" type="hidden" value="orther">
+				<form action="search" method="get" id="formsearch">
+					<input id="keyword" name="q" type="text" style="width:420px;" value="" placeholder="提问前请先搜索，看看你的问题其他人是否已经问过" class="ui_input" autocomplete="off">
+					<input type="button" value=" " onclick="if($.trim($('#keyword').val())!='' &amp;&amp; $.trim($('#keyword').val())!='提问前请先搜索，看看你的问题其他人是否已经问过'){$('#formsearch').submit();}" class="ask_button" data-bn-ipg="4-4">
+				</form>
+				<div id="search_menu">
+				</div>
+			</div>
+		</div>
+		<div class="ask_alltag fl">
+			<a href="#" title="全部标签" data-bn-ipg="5">全部标签</a>
+		</div>
+		<div class="ask_askhelp_btn">
+			<a rel="nofollow" href="#" data-bn-ipg="6"><img src="/images/ask_addask_btn.png" width="147" height="40" alt="我要提问" title="我要提问"></a>
+		</div>
+	</div>
+	<div class="ask_item mt10">
+		<form id="js_add_question" action="/create" method="post">
+			<div class="ask_item_main fl _jsajaxlogin" style="padding-bottom:120px;">
+				<h4 class="fb f14 cGray ask_quiz_title">问题标题</h4>
+				<div class="ask_item_main_quiz">
+					<div class="ask_quiz_pr">
+						<input type="text" onclick="ajaxlogin();" value="" name="title" class="ui_input ask_item_main_quiz_input js_inputGap jstitle" style="border-color: rgb(204, 204, 204);">
+						<div class="ask_quiz_pr_main">
+							<div class="pr">
+								<p>
+									完整而清晰的问题能更快获得回答，如"朗曼机场如何到曼谷市区？"，而不是"跪求机场交通"。
+约伴/征同游/交易等相关提问将被删除
+								</p>
+								<div class="clear">
+								</div>
+								<div class="ask_quiz_pr_jt">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cGray mt5 pl10">
+						<span class="js_title_num">0</span> / 50 字  <span class="js_title_error"></span>
+					</div>
+				</div>
+				<h4 class="fb f14 mt20 cGray ask_quiz_title">问题详细内容</h4>
+				<div class="ask_item_main_quiz">
+					<div class="mod_edittext">
+						<div class="ask_append ask_quiz_pr">
+							<div class="ask_append_title">
+								<a class="js_addpic_a" style="display:none;">插入图片</a><span id="spanButtonPlaceHolder" alt="1"></span>
+							</div>
+<!--							<iframe src="" width="668" height="100" scrolling="No" frameborder="0" id="iframe_question" style="width: 668px; height: 100px;" name="iframe_question">
+							</iframe>-->
+							<textarea style="width:668px;height:100px;border-color: rgb(204, 204, 204);" id="content" name="content" class="auto_text ui_textarea ask_item_main_quiz_textarea jscontent"></textarea>
+							
+							<div class="ask_quiz_pr_main">
+								<div class="pr">
+									<p>
+										更详细地说明问题，或提供与之相关的背景信息和参考资料
+									</p>
+									<div class="clear">
+									</div>
+									<div class="ask_quiz_pr_jt">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cGray mt5 pl10">
+						<span class="js_content_num">0</span> / 1000 字  <span class="js_content_error"></span>
+					</div>
+				</div>
+				<h4 class="fb f14 mt20 cGray ask_quiz_title">添加问题标签</h4>
+				<div class="ask_quiz_pr">
+					<!--@20141011 by zhangbiao add tag input function -->
+					<div class="tag-box">
+						<dl class="tag-list clearfix">
+						</dl>
+						<input class="ui3_input tag-input js-tag-input" type="text" name="tag" placeholder="输入主题标签">
+						<ul class="recommend-list">
+						</ul>
+					</div>
+					<!-- end -->
+                    
+					<div class="ask_quiz_pr_main">
+						<div class="pr">
+							<p>
+								给问题添加合适的标签，能够帮助问题快速得到回答。当你觉得我们自动添加的标签不准确时，可以自行增减。每个问题最多可添加5个标签。
+							</p>
+							<div class="clear">
+							</div>
+							<div class="ask_quiz_pr_jt">
+							</div>
+						</div>
+					</div>
+<!--                <h4 class="fb f14 mt20 cGray ask_quiz_title">电子邮件地址</h4>
+				<div class="ask_quiz_pr">
+					<div class="tag-box">
+						<dl class="tag-list clearfix">
+						</dl>
+						<input class="ui3_input tag-input js-tag-input" type="text" name="email" placeholder="输入邮件地址">
+						<ul class="recommend-list">
+						</ul>
+					</div>
+                    <div class="ask_quiz_pr_main">
+						<div class="pr">
+							<p>
+								请填写真实有效的邮件地址，有人回复您的提问，会自动发送邮件提醒您！
+							</p>
+							<div class="clear">
+							</div>
+							<div class="ask_quiz_pr_jt">
+							</div>
+						</div>
+					</div>
+				</div>-->
+				<div class="ask_tagmain_list_bbs mt20">
+					
+					<div class="ask_tagmain_list_bbs_select mt10">
+						
+						
+						
+						<div class="clear">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix mt10 ask_tagmain_list_quiz_btn _jsajaxlogin">
+					<input id="jssubmit" type="button" class="fr ui_button14" onclick="var rs = checkForm();if(rs == true){$('#js_add_question').submit();}" name="jssubmit" value="发表问题">
+					<input id="nojssubmit" type="button" class="fr ui_button14_disabled" value="发表问题" style="display: none;">
+					
+					
+				</div>
+			</div>
+		</form>
+		<div class="ask_sidebar fr">
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+</div>
+</body>
+</html>

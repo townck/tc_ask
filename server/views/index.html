@@ -1,0 +1,134 @@
+<div class="askwrap">
+<div class="ask_posi ask_wrap">
+	<a href="http://townck.com">唐客旅游网</a><span class="sp">></span>韩国旅游问答社区
+</div>
+<!--//.asp_posi-->
+<div class="ask_top_desc ask_wrap">
+	<h2><a href="/">唐客问答</a></h2>
+	<p> 
+		<strong class="fb">欢迎来到唐客旅游网问答社区！</strong></br>韩国旅游相关的各种问题，无论你是新手上路，还是旅行专家，提出你的问题，分享你的答案，在这里让我们大家互相帮助吧！
+	</p>
+</div>
+<!--//.ask_top_desc-->
+<div class="ask_search ask_wrap">
+	<div class="ask_search_main">
+		<div class="ask_search_text">
+			<input id="type" name="type" type="hidden" value="index">
+			<form action="/search" method="get" id="formsearch">
+				<input id="keyword" name="q" type="text" style="width:600px;" value="" placeholder="提问前请先搜索，看看你的问题其他是否有人已经问过" class="ui_input" autocomplete="off">
+				<input type="button" value=" " onclick="if($.trim($('#keyword').val())!='' &amp;&amp; $.trim($('#keyword').val())!='提问前请先搜索，看看你的问题其他人是否已经问过'){$('#formsearch').submit();}" class="ask_button">
+			</form>
+			<div id="search_menu">
+			</div>
+		</div>
+	</div>
+	<div class="ask_askhelp_btn">
+		<a rel="nofollow" title="我要提问" href="/form"><img src="/images/ask_addask_btn.png" width="147" height="40" alt="我要提问"></a>
+	</div>
+    <span class="relaso"><p><strong>近期搜索的问题：</strong> 韩国机场再哪里？</p></span>
+</div>
+<!--//.ask_search-->
+
+<div class="ask_item" style="margin: -32px auto 0;">
+	<div class="ask_item_main fl">
+		<h3 class="fb f14 cGray">
+		
+		<%if(!isQuery){%>
+		<a <%if(type!=='all'){ %> href="/list/all/<%=queryTag%>" <% }else{ %> class="cGray f14" <%}%> >最新问题</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+		<a <%if(type!=='hot'){ %> href="/list/hot/<%=queryTag%>" <% }else{ %> class="cGray f14" <%}%> >热门问题</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+		<a <%if(type!=='wait'){ %> href="/list/wait/<%=queryTag%>" <% }else{ %> class="cGray f14" <%}%> >待回答问题</a>
+		
+		<%}else{%>
+			<a  class="cGray f14" >查询</a>
+		<%}%>
+		</h3>
+		<div class="ask_item_main_item">
+			
+			<div class="fr mt10 ask_item_main_item_more js_morepage">
+				<div data-from="0" data-bn-ipg="6-1-0" id="0" alt="10" class="ui_remore js_index_more">
+					显示更多
+				</div>
+			</div>
+			<div class="clear">
+			</div>
+			<script type="text/javascript">
+				$(function(){
+					//显示更多控件
+					$(".ui_remore").live("mouseover",function(){$(this).addClass("ui_remore_hover");});
+					$(".ui_remore").live("mouseout",function(){$(this).removeClass("ui_remore_hover");});
+				});
+				</script>
+		</div>
+	</div>
+	<% include sidebar.html %>
+</div>
+</div>
+<!--//.ask_item-->
+
+<textarea id="temp" style="display:none;"> 
+　　 {for item in list}
+	<div class="ask_item_main_item_list clearfix">
+		<div class="fl ui_headPort" alt="2191882">
+			<a href="#" target="_blank" data-bn-ipg="6-1-1-1"><img width="48" height="48" src="${item.user.poster}" class="ui_headPort_img" alt="gumohan"></a>
+		</div>
+		<div class="fr ask_item_main_item_list_content">
+			<div class="ask_item_main_item_list_icon">
+			</div>
+			<h4 class="ask_item_main_item_list_title">
+				<a href="/detail/${item._id}" title="${item.title}" class="qyer_spam_text_filter">
+				${item.title}
+				</a>
+			</h4>
+			<blockquote class="qyer_spam_text_filter">
+				${item.content.substring(0,100)}${item.content.length>=100?'...':''}
+			</blockquote>
+			<div class="ask_item_main_item_list_tab">
+				{for tag in item.tag}
+				<a href="/list/<%=type%>/${tag}" class="ask_tag"><strong class="ask_tag_strong">${tag}</strong></a>
+				{/for}
+			</div>
+			<div class="clearfix">
+				<span class="fl cGray"><a class="fn" href="#" target="_blank" data-bn-ipg="6-1-1-4">${item.user.name}</a> | ${item.dateStr}</span>
+				
+				<span class="fr"><%if(user.admin){%><a href="/question/delete/${item._id}" onclick="return confirm('Are you sure?')">删除 </a><%}%><span>回答 ${item.answers || 0}</span>&nbsp;&nbsp;&nbsp;
+<!--					<span>管理员编辑</span>-->
+			</div>
+			<div class="clear">
+			</div>
+		</div>
+	</div>
+	{/for}
+</textarea> 
+
+
+<script>
+	var page = 0
+	var data = <%-JSON.stringify(list)%>
+	var url = '/list/<%=type%>'
+	
+　　 var result = TrimPath.processDOMTemplate("temp", { list: data });
+	
+	$('.ask_item_main_item_more').before(result)
+	
+	console.log(result)
+	if( '<%=queryTag%>' )
+		url += '/<%=queryTag%>'
+	
+	$('.ask_item_main_item_more').click(function(){
+		
+		$.get(url+'?page='+ ++page, function(data){
+			if( !data.length ){
+				$('.js_index_more').html('已经是最后一页')
+				return 
+			}
+			
+			var result = TrimPath.processDOMTemplate("temp", { list: data });
+	
+			$('.ask_item_main_item_more').before(result)
+			
+			console.log(data)
+		})
+	})
+</script>

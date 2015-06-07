@@ -1,0 +1,209 @@
+
+<div class="askwrap">
+<div class="ask_wrap">
+<div class="ask_posi ask_wrap">
+	<a href="http://townck.com">唐客旅游网</a><span class="sp">></span><a href="/">唐客问答</a><span class="sp">></span>填写问题
+</div>
+<!--//.asp_posi-->
+	<!--//.asp_posi-->
+<div class="ask_top_desc ask_wrap">
+	<h2><a href="/">唐客问答</a></h2>
+	<p>
+		<strong class="fb">欢迎来到唐客旅游网问答社区！</strong></br>韩国旅游相关的各种问题，无论你是新手上路，还是旅行专家，提出你的问题，分享你的答案，在这里让我们大家互相帮助吧！
+	</p>
+</div>
+<!--//.ask_top_desc-->
+<div class="ask_search ask_wrap">
+	<div class="ask_search_main">
+		<div class="ask_search_text">
+			<input id="type" name="type" type="hidden" value="index">
+			<form action="/search" method="get" id="formsearch">
+				<input id="keyword" name="q" type="text" style="width:600px;" value="" placeholder="提问前请先搜索，看看你的问题其他是否有人已经问过" class="ui_input" autocomplete="off">
+				<input type="button" value=" " onclick="if($.trim($('#keyword').val())!='' &amp;&amp; $.trim($('#keyword').val())!='提问前请先搜索，看看你的问题其他人是否已经问过'){$('#formsearch').submit();}" class="ask_button">
+			</form>
+			<div id="search_menu">
+			</div>
+		</div>
+	</div>
+	<div class="ask_askhelp_btn">
+		<a rel="nofollow" title="我要提问" href="#"><img src="images/ask_addask_btn.png" width="147" height="40" alt="我要提问"></a>
+	</div>
+</div>
+<!--//.ask_search-->
+	<div class="ask_item mt10">
+		<form id="js_add_question" action="/create" method="post">
+			<div class="ask_item_main fl _jsajaxlogin" style="padding-bottom:120px;">
+				<h4 class="fb f14 cGray ask_quiz_title">问题标题</h4>
+				<div class="ask_item_main_quiz">
+					<div class="ask_quiz_pr">
+						<input type="text" onclick="" value="<%=doc.title||''%>" id="title" name="title" class="ui_input ask_item_main_quiz_input js_inputGap jstitle" style="border-color: rgb(204, 204, 204);">
+						<div class="ask_quiz_pr_main">
+							<div class="pr">
+								<p>
+									完整而清晰的问题能更快获得回答，如"韩国仁川机场如何到首尔市区？"，而不是"跪求机场交通"。
+
+								</p>
+								<div class="clear">
+								</div>
+								<div class="ask_quiz_pr_jt">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cGray mt5 pl10">
+						<span class="js_title_num">0</span> / 50 字  <span class="js_title_error"></span>
+					</div>
+					<script language="javascript">
+						$('#title').keyup(function(){
+							$('.js_title_num').html($('#title').val().length)
+						})
+					</script>
+				</div>
+				<h4 class="fb f14 mt20 cGray ask_quiz_title">问题详细内容</h4>
+				<div class="ask_item_main_quiz">
+					<div class="mod_edittext">
+						<div class="ask_append ask_quiz_pr">
+							
+							<textarea style="width:668px;height:100px;border-color: rgb(204, 204, 204);" value="" id="content" name="content" class="auto_text ui_textarea ask_item_main_quiz_textarea jscontent"><%=doc.content||''%></textarea>
+							
+							<div class="ask_quiz_pr_main">
+								<div class="pr">
+									<p>
+										更详细地说明问题，或提供与之相关的背景信息和参考资料
+									</p>
+									<div class="clear">
+									</div>
+									<div class="ask_quiz_pr_jt">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cGray mt5 pl10">
+						<span class="js_content_num">0</span> / 1000 字  <span class="js_content_error"></span>
+					</div>
+					
+					<script language="javascript">
+						$('#content').keyup(function(){
+							$('.js_content_num').html($('#content').val().length)
+						})
+					</script>
+				</div>
+				<h4 class="fb f14 mt20 cGray ask_quiz_title">添加问题标签（关键词）</h4>
+				<div class="ask_quiz_pr">
+					
+					<div class="tag-box">
+						<dl class="tag-list clearfix">
+						</dl>
+						<input class="ui3_input tag-input js-tag-input" value="<%=doc.tag||''%>" type="text" id="tag" name="tag" placeholder="输入主题标签，空格键分开">
+						<ul class="recommend-list">
+						</ul>
+					</div>
+					<!-- end -->
+                    
+					<div class="ask_quiz_pr_main">
+						<div class="pr">
+							<p>
+								给问题添加合适的标签，能够帮助问题快速得到回答。每个问题最多可添加5个标签，空格键分开。
+							</p>
+							<div class="clear">
+							</div>
+							<div class="ask_quiz_pr_jt">
+							</div>
+						</div>
+					</div>
+				
+                <!-- 手机号码 -->   
+                <h4 class="fb f14 mt20 cGray ask_quiz_title">临时用户名</h4>
+				  <div class="ask_quiz_pr">
+				
+					<div class="tag-box">
+						<dl class="tag-list clearfix">
+						</dl>
+						<input class="ui3_input ntag-input js-tag-input" type="text" value="<%=user.name%>" id="username" name="username" placeholder="请输入临时用户名">
+						<ul class="recommend-list">
+						</ul>
+					</div>
+				</div>
+                 <!-- 邮件地址 -->
+                  <h4 class="fb f14 mt20 cGray ask_quiz_title">电子邮件地址(有人回复的话，发送问题网址给客户邮箱)</h4>
+				  <div class="ask_quiz_pr">
+				
+					<div class="tag-box">
+						<dl class="tag-list clearfix">
+						</dl>
+						<input class="ui3_input ntag-input js-tag-input" id="email" type="text" value="<%=user.email||''%>" name="email" placeholder="必填，邮件地址=编辑/删除的密码/邮件通知。">
+						<ul class="recommend-list">
+						</ul>
+					</div>
+				</div>
+				
+                <!-- 邮件地址 -->
+                
+                <!-- 手机号码 -->
+                
+                <!-- 微信号码 -->   
+<!--                  <h4 class="fb f14 mt20 cGray ask_quiz_title">微信号码</h4>
+				  <div class="ask_quiz_pr">
+				
+					<div class="tag-box">
+						<dl class="tag-list clearfix">
+						</dl>
+						<input class="ui3_input ntag-input js-tag-input" type="text" name="tag-input" placeholder="选填，有人回复，可微信通知，管理员可见。">
+						<ul class="recommend-list">
+						</ul>
+						<input type="hidden" name="tag[]" value="">
+						<input type="hidden" name="tag[]" value="">
+						<input type="hidden" name="tag[]" value="">
+						<input type="hidden" name="tag[]" value="">
+						<input type="hidden" name="tag[]" value="">
+					</div>
+				</div>-->
+                <!-- 手机号码 -->
+                
+				<div class="ask_tagmain_list_bbs mt20">
+					
+					<div class="ask_tagmain_list_bbs_select mt10">
+						
+						<div class="clear">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix mt10 ask_tagmain_list_quiz_btn _jsajaxlogin">
+                    <input id="jssubmit" type="button" class="fr ui_button14" onclick="var rs = checkForm();if(rs == true){$('#js_add_question').submit();}" name="jssubmit" value="发表问题">
+					<input class="fr ui3_input ntag-input js-tag-input" style="height:25px" id="captcha" type="text" name="captcha" placeholder="请输入验证码">
+					<img width="120" style="margin-right:10px" class="fr" src="/captcha" alt="">
+					
+<!--                
+					<a href="#" class="fr mt5 mr10">取消</a>
+					<p class="mod_edittext_transpond fr">
+						同时转发到：
+						<label><input name="weibopublish" type="checkbox" flag="0" notoken="1" weibo="weibo" value="1" id="weibopublish" class="vm _jsweibopublis">
+						<img id="weiboimg" src="images/logo_weibo_off.png" class="vm">
+						</label><label><input name="qqpublish" type="checkbox" checked="" flag="0" weibo="qq" value="1" id="qqpublish" class="vm _jsweibopublis">
+						<img id="qqimg" src="images/logo_qq_on.png" class="vm">
+						</label>
+					</p>-->
+					
+				</div>
+			</div>
+		</form>
+		<div class="ask_sidebar fr">
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+</div>
+</div>
+
+<script>
+	var error = '<%=error%>'
+	
+	if( error === 'captcha' ){
+		alert('验证码错误')
+		$('#captcha').focus()
+	}
+	else if( error )
+		alert('添加失败！！')
+</script>
