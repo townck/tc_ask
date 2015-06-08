@@ -13,7 +13,7 @@ function checkAnswerForm()
 	}
 	
 	if( username.length < 4 || username.length > 15 ){
-		alert('请输入长度小于5 并且小于100 的临时用户名')
+		alert('请输入长度大于4 并且小于100 的临时用户名')
 		$("#username").focus();
 		return false
 	}
@@ -37,13 +37,13 @@ function checkForm(){
 	var captcha = $('#captcha').val()
 	
 	if( title.length < 5 || title.length > 100 ){
-		alert('请输入长度小于5 并且小于100 的标题')
+		alert('请输入长度大于5 并且小于100 的标题')
 		$("#title").focus();
 		return false
 	}
 	
 	if( content.length < 5 || content.length > 1000 ){
-		alert('请输入长度小于5 并且小于1000 的详细内容')
+		alert('请输入长度大于5 并且小于1000 的详细内容')
 		$("#content").focus();
 		return false
 	}
@@ -55,7 +55,7 @@ function checkForm(){
 	}
 	
 	if( username.length < 4 || username.length > 15 ){
-		alert('请输入长度小于5 并且小于100 的临时用户名')
+		alert('请输入长度大于4 并且小于15的临时用户名')
 		$("#username").focus();
 		return false
 	}
@@ -70,7 +70,7 @@ function checkForm(){
 	
 	console.log(email)
 	if (!reg.test(email)) {
-        alert(email + "不是有效的email地址，请输入有效的Email！");
+        alert(email + "不是有效的Email地址，请输入有效的Email地址！");
         $("#email").focus();
 		return false
     }
