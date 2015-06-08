@@ -39,7 +39,7 @@
 				<div class="ask_detail_content">
 					<h2 class="ask_detail_content_title qyer_spam_text_filter"><%=doc.title%></h2>
 					<div class="ask_detail_content_text qyer_spam_text_filter">
-						<%=doc.content%>
+						<%=doc.content(/\n/g, '<br>')%>
 					</div>
 					<div class="ask_detail_content_tag mt5">
 						<% doc.tag.forEach(function(tag){%>
