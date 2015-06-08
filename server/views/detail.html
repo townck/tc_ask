@@ -34,7 +34,7 @@
 		<div class="ask_item_main fl">
 			<div class="ask_detail_item clearfix">
 				<div class="ui_headPort fl" alt="1284074">
-					<a href="#" data-bn-ipg="7-1"><img src="<%=doc.user.poster%>" width="80" height="80" alt="lige510" title="lige510"></a>
+					<a href="#" ><img src="<%=doc.user.poster%>" width="80" height="80" alt="lige510" title="lige510"></a>
 				</div>
 				<div class="ask_detail_content">
 					<h2 class="ask_detail_content_title qyer_spam_text_filter"><%=doc.title%></h2>
@@ -52,7 +52,7 @@
 						<p class="fl">
 							<a href="#" > <%=doc.user.name%>  </a> | <%=doc.dateStr%>
 						</p>
-<!--						<a href="#" class="fr jsjubaoquestion" value="858432" data-bn-ipg="7-6">举报</a>-->
+<!--						<a href="#" class="fr jsjubaoquestion" value="858432" >举报</a>-->
 					</div>
 					<div class="clearfix mt10">
 						<div class="fl">
@@ -60,7 +60,7 @@
 							<!--分享代码-->
 						</div>
 						<span class="fr">
-						<input type="button" value="回答" onclick="$('#content').focus()" class="ui_btn_big jsjumptoanswer" data-bn-ipg="7-7">
+						<input type="button" value="回答" onclick="$('#content').focus()" class="ui_btn_big jsjumptoanswer" >
 						</span>
 					</div>
 				</div>
@@ -71,7 +71,7 @@
 					<p class="fl fb cGray">
 						排序：
 					</p>
-					<span class="cGray">按有用</span>&nbsp;&nbsp;<a data-qid="858432" data-orderway="time" data-page="1" href="#" data-bn-ipg="8-2" class="js_getanswers">按时间</a>
+					<span class="cGray">按有用</span>&nbsp;&nbsp;<a data-qid="858432" data-orderway="time" data-page="1" href="#"  class="js_getanswers">按时间</a>
 					<span class="fr">共 <%=answers.length%> 个回答</span>
 				</div>
 				
@@ -79,7 +79,7 @@
 				<div class="mod_discuss clearfix jsanswerbox oh">
 					<div class="mod_discuss_face">
 						<div class="ui_headPort" alt="734348">
-							<a data-bn-ipg="8-1-1-1" href="#" width="80" height="80" class="ui_headPort_img" alt="zha__li"><img width="70" height="70" src="<%=answer.user.poster%>"/></a>
+							<a href="#" width="80" height="80" class="ui_headPort_img" alt="zha__li"><img width="70" height="70" src="<%=answer.user.poster%>"/></a>
 						</div>
 					</div>
 					<div class="mod_discuss_cnt">
@@ -88,7 +88,7 @@
 						<div class="mod_discuss_box">
 							<div class="jsanswercontent">
 								<div class="mod_discuss_box_name">
-									<a data-bn-ipg="8-1-1-2" ><%=answer.user.name%></a>  | 
+									<a><%=answer.user.name%></a>  | 
 	                            	<%=answer.dateStr%>
 								</div>
 								<div class="mod_discuss_box_text qyer_spam_text_filter">
@@ -100,10 +100,10 @@
 											<span class="fl jiathis_style_title">分享到</span>
 											<!--这里插入分享代码-->
 										</div>
-										<a href="#" class="operate jsjubaoanswer mr10" value="1517866" data-bn-ipg="8-1-1-7" style="display: none;">举报</a>
+										<a href="#" class="operate jsjubaoanswer mr10" value="1517866" style="display: none;">举报</a>
 											<%if(user.admin){%><a href="/answer/delete/<%=doc._id%>/<%=answer._id%>" onclick="return confirm('Are you sure?')">删除 </a><%}%>
 										<span class="ask_detail_pr">
-											<a href="javascript:void(0)" data-bn-ipg="8-1-1-8" class="icon_praise jsaskansweruseful like_anwser" value="<%=answer._id%>">有用 <span class="like_count"><%=answer.like?answer.like.length:0%></span></a>
+											<a href="javascript:void(0)" class="icon_praise jsaskansweruseful like_anwser" value="<%=answer._id%>">有用 <span class="like_count"><%=answer.like?answer.like.length:0%></span></a>
 										<div class="ask_detail_pr_main" id="js_useful_tips" style="">
 											<p>
 												如果觉得回答有帮助，请点击“有用”这是对回答者最热烈的掌声。
@@ -112,7 +112,7 @@
 										</div>
 										</span>
 									</div>
-<!--									<a data-bn-ipg="8-1-1-4" href="#" class="icon_discuss jsslideshowcomment" alt="1517866" value="0" rel="zha__li" isself="0"><span>
+<!--									<a href="#" class="icon_discuss jsslideshowcomment" alt="1517866" value="0" isself="0"><span>
 									讨论
 									</span>-->
 									&nbsp;
@@ -127,7 +127,7 @@
 				<h4 class="fb f14 mt20 js_tmp">添加回答</h4>
 				<div class="mod_discuss clearfix mt10">
 					<div class="mod_discuss_face ui_headPort" alt="6047093">
-						<a href="#" class="fl" data-bn-ipg="9-1"><img src="<%=user.poster%>" width="80" height="80" alt="Vinner7"></a>
+						<a href="#" class="fl"><img src="<%=user.poster%>" width="80" height="80" alt="Vinner7"></a>
 					</div>
 					<div class="mod_discuss_cnt">
 						<div class="mod_discuss_cnt_triangle">
@@ -148,7 +148,7 @@
 										</div>
 									</div>
 									<div class="mod_edittext_btn clearfix _jsajaxlogin">
-										<input type="button" class="ui_button fr" onclick="var rs = checkAnswerForm();if(rs == true){$('#jsaddanswer').submit();}" id="jsanswersubmit" value="回答" data-bn-ipg="9-3">
+										<input type="button" class="ui_button fr" onclick="var rs = checkAnswerForm();if(rs == true){$('#jsaddanswer').submit();}" id="jsanswersubmit" value="回答" >
 										
 										<input class="fr ui3_input ntag-input js-tag-input" style="height:25px;" id="username" value="<%=user.name%>" type="text" name="username" placeholder="请输入临时用户名">
 										<input class="fr ui3_input ntag-input js-tag-input" style="height:25px;margin-right:10px;width:75px" id="captcha" type="text" name="captcha" placeholder="请输入验证码">

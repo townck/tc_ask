@@ -9,12 +9,12 @@
 			
 			<div class="ask_sidebar_tag_list">
 				<%sidebar.tags.forEach(function(tag){ %>
-					<a href="/list/all/<%=tag._id%>" class="ask_tag" data-bn-ipg="22-3-1"><strong class="ask_tag_strong"><%=tag._id%></strong></a>
+					<a href="/list/all/<%=tag._id%>" class="ask_tag" ><strong class="ask_tag_strong"><%=tag._id%></strong></a>
 				<% }) %>
 				
 			</div>
 			<div class="tr mt5">
-				<a title="全部问答标签" href="#" data-bn-ipg="22-0">全部问答标签</a>
+				<a title="全部问答标签" href="#" >全部问答标签</a>
 			</div>
 		</div>
 	  <div class="ask_sidebar fr">
@@ -25,7 +25,7 @@
 		    <h4 class="f14 fb cGray">热门问题</h4>
 		    <ul class="mt5 clearfix">
 			  <% sidebar.questions.forEach(function(question){ %>
-	          <li><strong>&bull;</strong><span><a title="<%=question.title%>" href="/detail/<%=question._id%>" data-bn-ipg="21-1"><%=question.title%></a></span></li>
+	          <li><strong>&bull;</strong><span><a title="<%=question.title%>" href="/detail/<%=question._id%>" ><%=question.title%></a></span></li>
 	    	  <% }) %>
 	    	</ul>
 	    </div>
@@ -35,18 +35,18 @@
 		    <ul class="bbs_guidelist clearfix">
 		     
 			  <li>
-		        <p> <a href="http://www.townck.com/notice/index.html" target="_blank" data-bn-ipg="22-1"><img src="http://www.townck.com/images/notice/seoul.jpg"  alt="首尔攻略" title="首尔攻略" /></a> </p>
-		        <p class="bbs_guidelist_title"> <a href="http://www.townck.com/notice/index.html" target="_blank" title="首尔攻略" data-bn-ipg="22-1">首尔攻略</a> </p>
+		        <p> <a href="http://www.townck.com/notice/index.html" target="_blank" ><img src="http://www.townck.com/images/notice/seoul.jpg"  alt="首尔攻略" title="首尔攻略" /></a> </p>
+		        <p class="bbs_guidelist_title"> <a href="http://www.townck.com/notice/index.html" target="_blank" title="首尔攻略" ">首尔攻略</a> </p>
 		      	
 	          </li>
 		      <li>
-		        <p> <a href="http://www.townck.com/notice/index.html" target="_blank" data-bn-ipg="22-2"><img src="/images/80_120.jpg?1422520568"  alt="济州岛攻略" title="济州岛攻略" /></a> </p>
-		        <p class="bbs_guidelist_title"> <a href="http://www.townck.com/notice/index.html" target="_blank" title="济州岛攻略" data-bn-ipg="22-2">济州岛攻略</a> </p>
+		        <p> <a href="http://www.townck.com/notice/index.html" target="_blank" ><img src="/images/80_120.jpg?1422520568"  alt="济州岛攻略" title="济州岛攻略" /></a> </p>
+		        <p class="bbs_guidelist_title"> <a href="http://www.townck.com/notice/index.html" target="_blank" title="济州岛攻略" >济州岛攻略</a> </p>
 		        
 	          </li>
               
 	        </ul>
-		    <div class="tr mt5"> <a href="http://www.townck.com/notice/index.html" target="_blank" data-bn-ipg="22-0">更多韩国旅游攻略</a> </div>
+		    <div class="tr mt5"> <a href="http://www.townck.com/notice/index.html" target="_blank" >更多韩国旅游攻略</a> </div>
         </div>
 	  </div>
         

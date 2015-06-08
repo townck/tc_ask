@@ -25,7 +25,7 @@
 	<div class="ask_askhelp_btn">
 		<a rel="nofollow" title="我要提问" href="/form"><img src="/images/ask_addask_btn.png" width="147" height="40" alt="我要提问"></a>
 	</div>
-    <span class="relaso"><p><strong>近期搜索的问题：</strong> 韩国机场再哪里？</p></span>
+    
 </div>
 <!--//.ask_search-->
 
@@ -47,7 +47,7 @@
 		<div class="ask_item_main_item">
 			
 			<div class="fr mt10 ask_item_main_item_more js_morepage">
-				<div data-from="0" data-bn-ipg="6-1-0" id="0" alt="10" class="ui_remore js_index_more">
+				<div data-from="0" id="0" alt="10" class="ui_remore js_index_more">
 					显示更多
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 　　 {for item in list}
 	<div class="ask_item_main_item_list clearfix">
 		<div class="fl ui_headPort" alt="2191882">
-			<a href="#" target="_blank" data-bn-ipg="6-1-1-1"><img width="48" height="48" src="${item.user.poster}" class="ui_headPort_img" alt="gumohan"></a>
+			<a href="#" target="_blank" ><img width="48" height="48" src="${item.user.poster}" class="ui_headPort_img" alt="gumohan"></a>
 		</div>
 		<div class="fr ask_item_main_item_list_content">
 			<div class="ask_item_main_item_list_icon">
@@ -90,7 +90,7 @@
 				{/for}
 			</div>
 			<div class="clearfix">
-				<span class="fl cGray"><a class="fn" href="#" target="_blank" data-bn-ipg="6-1-1-4">${item.user.name}</a> | ${item.dateStr}</span>
+				<span class="fl cGray"><a class="fn" href="#" target="_blank" >${item.user.name}</a> | ${item.dateStr}</span>
 				
 				<span class="fr"><%if(user.admin){%><a href="/question/delete/${item._id}" onclick="return confirm('Are you sure?')">删除 </a><%}%><span>回答 ${item.answers || 0}</span>&nbsp;&nbsp;&nbsp;
 <!--					<span>管理员编辑</span>-->
