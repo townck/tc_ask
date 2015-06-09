@@ -92,7 +92,11 @@
 			<div class="clearfix">
 				<span class="fl cGray"><a class="fn" href="#" target="_blank" >${item.user.name}</a> | ${item.dateStr}</span>
 				
-				<span class="fr"><%if(user.admin){%><a href="/question/delete/${item._id}" onclick="return confirm('Are you sure?')">删除 </a><%}%><span>回答 ${item.answers || 0}</span>&nbsp;&nbsp;&nbsp;
+				<span class="fr">
+					<%if(user.admin){%><a href="/admin/question/edit/${item._id}" >编辑 </a><%}%>
+					<%if(user.admin){%><a href="/question/delete/${item._id}" onclick="return confirm('Are you sure?')">删除 </a><%}%>
+					
+				<span>回答 ${item.answers || 0}</span>&nbsp;&nbsp;&nbsp;
 <!--					<span>管理员编辑</span>-->
 			</div>
 			<div class="clear">
@@ -105,7 +109,7 @@
 
 <script>
 	var page = 0
-	var data = <%-JSON.stringify(list)%>
+	var data = <%-JSON.stringify(list).replace(/<([^>]*)>/g, ' ')%>
 	var url = '/list/<%=type%>'
 	
 　　 var result = TrimPath.processDOMTemplate("temp", { list: data });

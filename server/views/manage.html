@@ -6,37 +6,34 @@
 </style>
 
 
-
+	
 <div class="manage">
-<p>基本管理功能</p>
-<p><button>备份数据库到目录</button><button>下载数据库到本地</button><button>刷新 index.js</button></p>
+	<p>基本管理功能</p>
+	<p><button>备份数据库到目录</button><button>下载数据库到本地</button><button>刷新 index.js</button></p>
+	
+<form action="/admin/update" method="post">
+	<p>友情链接</p>
+	<textarea style="width:900px; height:100px;" name="links"><%-manage.links%></textarea>
+	
+	<p>网站标题Title</p>
+	<textarea style="width:900px; height:50px;" name="title"><%-manage.title%></textarea>
 
+	<p>网站关键词Keywords</p>
+	<textarea style="width:900px; height:50px;" name="keywords"><%-manage.keywords%></textarea>
 
-<p>友情链接</p>
-<textarea style="width:900px; height:100px;">
-<a href="http://wpa.qq.com/msgrd?v=3&uin=357639858&site=qq&menu=yes" rel="nofollow" target="_blank">友情链接合作</a> |
-<a href="http://www.townck.com" title="唐客旅游 唐客韩国 韩国导游 韩国租车 韩国自由行 韩国旅游">唐客旅游网</a> |
-</textarea>
-<p><button>更新友链</button></p>
+	<p>网站描述Description</p>
+	<textarea style="width:900px; height:50px;" name="description"><%-manage.description%></textarea>
+	
+	<p><button>更新</button></p>
 
-
-<p style="margin-top:100px;color:#666666;">---辅助功能---（如果麻烦就不用做了)</p>
-<p>网站标题Title</p>
-<textarea style="width:900px; height:50px;">
-韩国旅游问答社区_韩国自由行_韩国旅游_韩国导游_韩国租车_【唐客旅游网】
-</textarea>
-<p><button>更新标题</button></p>
-<p>网站关键词Keywords</p>
-<textarea style="width:900px; height:50px;">
-韩国，韩国旅游，韩国旅游攻略，韩国自助游，韩国自由行，韩国旅游景点，韩国旅行，韩国旅游线路， 韩国旅游费用，韩国旅游报价，韩国购物，韩国导游，韩国租车，首尔自由行，首尔，旅游，自由行，导游，租车
-</textarea>
-<p><button>更新关键词</button></p>
-<p>网站描述Description</p>
-<textarea style="width:900px; height:50px;">
-唐客旅游网www.townck.com提供韩国导游，韩国租车，韩国自由行，韩国旅游，韩国自助游，韩国包车导游以及首尔自由行等多种旅游服务，去韩国旅游，首选唐客旅游网。全心全意，为您服务。
-</textarea>
-<p><button>更新描述</button></p>
-
-
+</form>
 
 </div>
+
+
+
+	
+
+	
+	
+	

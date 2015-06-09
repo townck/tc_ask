@@ -17,15 +17,14 @@
     <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="/javascripts/ask.js"></script>
     <script type="text/javascript" src="/javascripts/templates.js"></script>
-
 <%if(typeof doc!=='undefined'){%>
-	<title><%=doc.title%> 韩国旅游问答社区_韩国自由行_韩国旅游_【唐客旅游网】</title>
-	<meta name="keywords" content="<%=doc.tag.join('，')%>韩国，韩国旅游，韩国旅游攻略，韩国自助游，韩国自由行，韩国旅游景点，韩国旅行，韩国旅游线路， 韩国旅游费用，韩国旅游报价，韩国购物，韩国导游，韩国租车，首尔自由行" />
-	<meta name="description" content="<%=doc.content%>_韩国旅游问答社区_唐客旅游网" />
+	<title><%=doc.title%> <%=manage.title%></title>
+	<meta name="keywords" content="<%=doc.tag.join('，')%> <%=manage.keywords%>" />
+	<meta name="description" content="<%=doc.content%> <%=manage.description%>" />
 <%}else{%>
-  	<title>韩国旅游问答社区_韩国自由行_韩国旅游_韩国导游_韩国租车_【唐客旅游网】</title>
-	  <meta name="keywords" content="韩国，韩国旅游，韩国旅游攻略，韩国自助游，韩国自由行，韩国旅游景点，韩国旅行，韩国旅游线路， 韩国旅游费用，韩国旅游报价，韩国购物，韩国导游，韩国租车，首尔自由行，首尔，旅游，自由行，导游，租车" />
-  	<meta name="description" content="唐客旅游网www.townck.com提供韩国导游，韩国租车，韩国自由行，韩国旅游，韩国自助游，韩国包车导游以及首尔自由行等多种旅游服务，去韩国旅游，首选唐客旅游网。全心全意，为您服务。" />
+  	<title><%=manage.title%></title>
+	  <meta name="keywords" content="<%=manage.keywords%>" />
+  	<meta name="description" content="<%=manage.description%>" />
 <%}%>
 
 </head>
@@ -189,13 +188,13 @@
       color: #333333;
     }
   </style>
+  
+  
+  
 	<div class="main_s_yq">
 		<div class="tit_yq"><img src="http://www.townck.com/images/common/flink_bg.gif" width="66" height="58" alt="韩国导游 韩国租车 韩国包车"/></div> 
 		<div class="txt">
-	 <a href="http://wpa.qq.com/msgrd?v=3&uin=357639858&site=qq&menu=yes" rel="nofollow" target="_blank">友情链接合作</a> |
-    
-     <a href="http://www.townck.com" title="唐客旅游 唐客韩国 韩国导游 韩国租车 韩国自由行 韩国旅游">唐客旅游网</a> |
-     
+	 <%-manage.links%>
 		</div>
 	</div>
   
@@ -206,8 +205,6 @@
             <a href="http://wpa.qq.com/msgrd?v=3&uin=800027797&site=qq&menu=yes" rel="nofollow" target="_blank" class="hover">
             <img src="http://www.townck.com/images/common/bqq.png" class="common-left-wxdy" width="70" alt="">
             <span>QQ客服</span></a>
-            
-           
    		  </li>
     		  <li class="commom-left-khfw">
             <a href="http://qiao.baidu.com/v3/?module=default&controller=im&action=index&ucid=6657437&type=n&siteid=4456272" rel="nofollow"  target="_blank" class="hover">

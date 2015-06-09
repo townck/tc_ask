@@ -39,7 +39,7 @@
 				<div class="ask_detail_content">
 					<h2 class="ask_detail_content_title qyer_spam_text_filter"><%=doc.title%></h2>
 					<div class="ask_detail_content_text qyer_spam_text_filter">
-						<%=doc.content%>
+						<%-doc.content.replace(/<([^>]*)>/g, ' ').replace(/\n/g, '<br>')%>	
 					</div>
 					<div class="ask_detail_content_tag mt5">
 						<% doc.tag.forEach(function(tag){%>
@@ -50,7 +50,7 @@
 					</div>
 					<div class="clearfix mt10 oh">
 						<p class="fl">
-							<a href="#" > <%=doc.user.name%>  </a> | <%=doc.dateStr%>
+							<a href="#" > <%=doc.user.name%>  </a> | <%=doc.date%>
 						</p>
 <!--						<a href="#" class="fr jsjubaoquestion" value="858432" >举报</a>-->
 					</div>
@@ -89,10 +89,10 @@
 							<div class="jsanswercontent">
 								<div class="mod_discuss_box_name">
 									<a><%=answer.user.name%></a>  | 
-	                            	<%=answer.dateStr%>
+	                            	<%=answer.date%>
 								</div>
 								<div class="mod_discuss_box_text qyer_spam_text_filter">
-									<%-answer.content.replace(/\n/g, '<br>')%>	
+									<%-answer.content.replace(/<([^>]*)>/g, ' ').replace(/\n/g, '<br>')%>	
 								</div>
 								<div class="mod_discuss_box_tool clearfix">
 									<div class="fr">

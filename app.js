@@ -46,6 +46,7 @@ app.use(function(err, req, res, next) {
     console.log(err.message)
     res.render('error', {
         message: err.message,
+        manage:{},
         error: {}
     })
 })

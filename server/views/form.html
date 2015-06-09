@@ -31,7 +31,7 @@
 </div>
 <!--//.ask_search-->
 	<div class="ask_item mt10">
-		<form id="js_add_question" action="/create" method="post">
+		<form id="js_add_question" action="<% if(question._id){%>/admin/question/update<%}else{%>/create<%}%>" method="post">
 			<div class="ask_item_main fl _jsajaxlogin" style="padding-bottom:120px;">
 				<h4 class="fb f14 cGray ask_quiz_title">问题标题</h4>
 				<div class="ask_item_main_quiz">
@@ -170,6 +170,7 @@
 						</div>
 					</div>
 				</div>
+				<input type="hidden" name="_id" value="<%=question._id%>" />
 				<div class="clearfix mt10 ask_tagmain_list_quiz_btn _jsajaxlogin">
                     <input id="jssubmit" type="button" class="fr ui_button14" onclick="var rs = checkForm();if(rs == true){$('#js_add_question').submit();}" name="jssubmit" value="发表问题">
 					<input class="fr ui3_input ntag-input js-tag-input" style="height:25px" id="captcha" type="text" name="captcha" placeholder="请输入验证码">

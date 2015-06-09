@@ -10,11 +10,12 @@ var express = require('express')
 	, dateFormat = require('../../tools/tools.js').dateFormat
 	, getDateAgo = require('../../tools/tools.js').getDateAgo
 	, ccap = require('ccap')()
+	, Manage = require('../../tools/mongodb.js').getCollection('manage')
 
 function getSidebarData(done)
 {
 	Questions.find({}).sort({ answers: -1 }).limit(10).toArray(function(err, questions){
-		Tags.find({}).sort({ count: -1 }).limit(50).toArray(function(err, tags){
+		Tags.find({ count: { $gte: 1 } }).sort({ count: -1 }).limit(50).toArray(function(err, tags){
 			Questions.count({}, function(err, qcount){
 				Answers.count({}, function(err, acount){
 					done({ questions: questions || [], tags: tags || [], acount: acount, qcount: qcount })
@@ -67,60 +68,42 @@ router.get(['/', '/search', '/list/:type', '/list/:type/:tag'], function(req, re
 		
 		list.forEach(function(item){
 			item.dateStr = getDateAgo(item.date)
+			item.user = {name:item.user.name, poster: item.user.poster}
+			delete item.email
+			delete item.captcha
 		})
 
 		if( page )
 			return res.json(list)
 		
 		getSidebarData(function(data){
-			res.render('index', { list: list, sidebar: data, type: req.params.type, queryTag: req.params.tag, isQuery: !!req.query.q, user: req.user })
+			res.render('index', { manage: req.manage, list: list, sidebar: data, type: req.params.type, queryTag: req.params.tag, isQuery: !!req.query.q, user: req.user })
 		})
 	})
 })
 
 router.get('/form', function(req, res){
-	res.render('form', { question: {}, error: '', user: req.user })
+	res.render('form', { manage: req.manage, question: {}, error: '', user: req.user })
 })
 
 router.get('/admin/login', function(req, res){
-	res.render('login', {})
+	res.render('login', { manage: req.manage })
 })
 
 router.post('/login', function(req, res)
 {
 	Users.findOne({username: req.body.username, password: req.body.password }, function(err, user){
 		req.session.admin = user
-		
 		res.redirect('/')
 	})
-})
-
-router.get('/question/delete/:_id', function(req, res)
-{
-	if( req.session.admin ){
-		Questions.removeById(req.params._id, function(){
-			
-			res.redirect('/')
-		})
-	}
-	else
-		res.redirect('/')
-})
-
-router.get('/answer/delete/:qid/:aid', function(req, res){
-	if( req.session.admin ){
-		Answers.remove({qid: req.params.qid, _id: req.params.aid }, function(){
-			Questions.updateById(req.params.qid, { $inc: { answers: -1 } }, function(){})
-			res.redirect('/detail/'+req.params.qid)
-		})
-	}
-	else
-		res.redirect('/')
 })
 
 router.get('/detail/:id', function(req, res)
 {
 	Questions.findById(req.params.id, function(err, doc){
+		if(!doc)
+			return res.redirect('/')
+			console.log(doc)
 		Answers.find({ qid: req.params.id }).toArray(function(err, answers){
 			doc.dateStr = getDateAgo(doc.date)
 			doc.date = dateFormat(doc.date, 'yyyy-MM-dd hh:mm')
@@ -130,8 +113,7 @@ router.get('/detail/:id', function(req, res)
 			})
 			
 			getSidebarData(function(data){
-				
-				res.render('detail', { doc: doc, answers:answers, content: req.query.content, sidebar: data, user: req.user, error: req.query.error || '' })
+				res.render('detail', { manage: req.manage, manage: req.manage, doc: doc, answers:answers, content: req.query.content, sidebar: data, user: req.user, error: req.query.error || '' })
 			})
 		})
 	})
@@ -166,7 +148,7 @@ router.post('/create', function(req, res)
 	Captcha.findById(req.cookies._id, function(err, captcha)
 	{
 		if( err || !captcha || captcha.value.toUpperCase() !== req.body.captcha.toUpperCase() )
-			return res.render('form', { question: req.body, error: 'captcha', user: req.user })
+			return res.render('form', { manage: req.manage, question: req.body, error: 'captcha', user: req.user })
 		
 		if( req.body.title && req.body.content && req.body.tag )
 		{
@@ -186,7 +168,7 @@ router.post('/create', function(req, res)
 					return res.redirect('/detail/'+req.body._id)
 				}
 				
-				res.render('form', { question: req.body, error: true, user: req.user })
+				res.render('form', { manage: req.manage, question: req.body, error: true, user: req.user })
 			})
 		}
 	})
