@@ -13,12 +13,12 @@ router.get('/admin/manage', function(req, res){
 	res.render('manage', { manage: req.manage, user: req.user })
 })
 
-router.post('/admin/update', function(req, res){
+router.post('/admin/manage/update', function(req, res){
+	req.body._id = _id
 	Manage.updateById(_id, req.body, { upsert: true }, function(err){
 		res.redirect('/admin/manage')
 	})
 })
-
 
 router.get('/admin/question/edit/:_id', function(req, res){
 	Questions.findById(req.params._id, function(err, doc){
