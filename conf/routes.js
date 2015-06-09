@@ -5,16 +5,11 @@ var Users = require('../tools/mongodb.js').getCollection('users')
 
 	
 var posterList = [
-	'/images/av6.gif'
-	, '/images/small5.png'
-	, '/images/10_avatar_middle.jpg'
-	, '/images/middle2.png'
-	, '/images/av1.gif'
+	'/images/av1.gif'
 	, '/images/av2.gif'
 	, '/images/av3.gif'
 	, '/images/av4.gif'
 	, '/images/av5.gif'
-	, '/images/small4.png'
 ]
 
 module.exports = function(app)
@@ -22,7 +17,7 @@ module.exports = function(app)
 	app.use(function(req, res, next)
 	{
 		if( !req.cookies._id ){
-			req.cookies.poster = posterList[parseInt(Math.random()*posterList.length,10)]
+			req.cookies.poster = posterList[parseInt(Math.random() * posterList.length, 10)]
 			req.cookies._id = getUid(16)
 			res.cookie('_id', req.cookies._id)
 			res.cookie('poster', req.cookies.poster)
@@ -33,8 +28,10 @@ module.exports = function(app)
 			, poster: req.cookies.poster
 		}
 		
-		if( req.session.admin )
+		if( req.session.admin ){
+			req.user.poster = '/images/av6.gif'
 			req.user.admin = true
+		}
 		
 		if( req.body.username ) {
 			res.cookie('username', req.body.username)
