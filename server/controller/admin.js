@@ -6,7 +6,11 @@ var express = require('express')
 	, Questions = require('../../tools/mongodb.js').getCollection('questions')
 	, Answers = require('../../tools/mongodb.js').getCollection('answers')
 	, Tags = require('../../tools/mongodb.js').getCollection('tags')
-	
+	, spawn = require('child_process').spawn
+	, dateFormat = require('../../tools/tools.js').dateFormat
+	, exec = require('child_process').exec
+
+
 var _id = '1234567890'
 
 router.get('/admin/manage', function(req, res){
@@ -22,6 +26,15 @@ router.post('/admin/manage/update', function(req, res){
 router.get('/admin/question/edit/:_id', function(req, res){
 	Questions.findById(req.params._id, function(err, doc){
 		res.render('form', { manage: req.manage, question: doc, error: '', user: req.user })
+	})
+})
+
+router.get('/admin/backup', function(req, res)
+{
+	var date = dateFormat(new Date, 'yyyy-MM-dd-hh-mm-dd')
+	var cmd = 'rm -r /root/tmp/backup/ask/*;mongodump -d ask -o /root/tmp/backup/;tar -cPvf /root/tc_ask/public/backup/ask'+ date +'.tar /root/tmp/backup'
+	exec(cmd,function (error, stdout, stderr) {
+	    res.redirect('/backup/ask'+ date +'.tar')
 	})
 })
 
