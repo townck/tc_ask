@@ -14,8 +14,7 @@ router.get('/admin/manage', function(req, res){
 })
 
 router.post('/admin/manage/update', function(req, res){
-	req.body._id = _id
-	Manage.updateById(_id, req.body, { upsert: true }, function(err){
+	Manage.updateById(_id, req.body, function(err){
 		res.redirect('/admin/manage')
 	})
 })
