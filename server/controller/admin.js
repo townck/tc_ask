@@ -31,7 +31,7 @@ router.get('/admin/question/edit/:_id', function(req, res){
 
 router.get('/admin/backup', function(req, res)
 {
-	var date = dateFormat(new Date, 'yyyy-MM-dd-hh-mm-dd')
+	var date = dateFormat(new Date, 'yyyyMMddhhmmss')
 	var cmd = 'rm -r /root/tmp/backup/ask/*;mongodump -d ask -o /root/tmp/backup/;tar -cPvf /root/tc_ask/public/backup/ask'+ date +'.tar /root/tmp/backup'
 	exec(cmd,function (error, stdout, stderr) {
 	    res.redirect('/backup/ask'+ date +'.tar')
