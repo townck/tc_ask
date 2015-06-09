@@ -25,7 +25,7 @@ module.exports = function(app)
 	
 		req.user = {
 			_id: req.cookies._id
-			, poster: req.cookies.poster
+			, poster: posterList[parseInt(Math.random() * posterList.length, 10)]
 		}
 		
 		if( req.session.admin ){
