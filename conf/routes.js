@@ -5,10 +5,16 @@ var Users = require('../tools/mongodb.js').getCollection('users')
 
 	
 var posterList = [
-	'/images/small4.png'
+	'/images/av6.gif'
 	, '/images/small5.png'
 	, '/images/10_avatar_middle.jpg'
 	, '/images/middle2.png'
+	, '/images/av1.gif'
+	, '/images/av2.gif'
+	, '/images/av3.gif'
+	, '/images/av4.gif'
+	, '/images/av5.gif'
+	, '/images/small4.png'
 ]
 
 module.exports = function(app)
