@@ -96,7 +96,7 @@
 					<div class="tag-box">
 						<dl class="tag-list clearfix">
 						</dl>
-						<input class="ui3_input tag-input js-tag-input" value="<%=question.tag||''%>" type="text" id="tag" name="tag" placeholder="输入主题标签，空格键分开">
+						<input class="ui3_input tag-input js-tag-input" value="<%=question.tag && question.tag.join(' ') ||''%>" type="text" id="tag" name="tag" placeholder="输入主题标签，空格键分开">
 						<ul class="recommend-list">
 						</ul>
 					</div>
