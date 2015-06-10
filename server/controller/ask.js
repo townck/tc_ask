@@ -147,13 +147,15 @@ router.post('/create', function(req, res)
 {
 	Captcha.findById(req.cookies._id, function(err, captcha)
 	{
+		req.body.tag = req.body.tag.replace(/ +/g, ' ').trim().split(' ')
+		
 		if( err || !captcha || captcha.value.toUpperCase() !== req.body.captcha.toUpperCase() )
 			return res.render('form', { manage: req.manage, question: req.body, error: 'captcha', user: req.user })
 		
 		if( req.body.title && req.body.content && req.body.tag )
 		{
 			req.body.user = req.user
-			req.body.tag = req.body.tag.replace(/ +/g, ' ').trim().split(' ')
+			
 			req.body._id = getUid(16)
 			req.body.date = new Date
 			
