@@ -238,7 +238,7 @@ a {
 .ask_item_main_item_list_tab {
 	overflow: hidden;
 	zoom: 1;
-	margin:5px 0;
+	margin:25px 0;
 }
 
 .ask_item_main_item_list_tab a {
@@ -276,7 +276,6 @@ a {
 	padding: 0 5px 0 0;
 	background: #ecf0f1;
 	white-space: nowrap;
-	
 	_background: #e6f4d9;
 }
 
