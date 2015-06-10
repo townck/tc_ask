@@ -71,13 +71,13 @@
 　　 {for item in list}
 	<div class="ask_item_main_item_list clearfix">
 		<div class="fl ui_headPort" alt="2191882">
-			<a href="#" target="_blank" ><img width="48" height="48" src="${item.user.poster}" class="ui_headPort_img" alt="gumohan"></a>
+			<a href="javascript:;" ><img width="48" height="48" src="${item.user.poster}" class="ui_headPort_img" alt="gumohan"></a>
 		</div>
 		<div class="fr ask_item_main_item_list_content">
 			<div class="ask_item_main_item_list_icon">
 			</div>
 			<h4 class="ask_item_main_item_list_title">
-				<a href="/detail/${item._id}" title="${item.title}" class="qyer_spam_text_filter">
+				<a target="_blank" href="/detail/${item._id}" title="${item.title}" class="qyer_spam_text_filter">
 				${item.title}
 				</a>
 			</h4>
@@ -86,7 +86,7 @@
 			</blockquote>
 			<div class="ask_item_main_item_list_tab">
 				{for tag in item.tag}
-				<a href="/list/<%=type%>/${tag}" class="ask_tag"><strong class="ask_tag_strong">${tag}</strong></a>
+				<a target="_blank"  href="/list/<%=type%>/${tag}" class="ask_tag"><strong class="ask_tag_strong">${tag}</strong></a>
 				{/for}
 			</div>
 			<div class="clearfix">
