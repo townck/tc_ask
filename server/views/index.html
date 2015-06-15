@@ -85,7 +85,9 @@
 				${item.content.substring(0,100)}${item.content.length>=100?'...':''}
 				{if item.image}
 					<br>
+					<a target="_blank" href="/detail/${item._id}" title="${item.title}" class="qyer_spam_text_filter">
 					<img src="/images/upload/${item.image}" alt="">
+					</a>
 				{/if}
 			</blockquote>
 			<div class="ask_item_main_item_list_tab">
