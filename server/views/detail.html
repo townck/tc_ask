@@ -41,6 +41,10 @@
 					<div class="ask_detail_content_text qyer_spam_text_filter">
 						<%-doc.content.replace(/<([^>]*)>/g, ' ').replace(/\n/g, '<br>')%>	
 					</div>
+					<%if(doc.image){%>
+					<br>
+					<img src="/images/upload/<%=doc.image%>" alt="">
+					<%}%>
 					<div class="ask_detail_content_tag mt5">
 						<% doc.tag.forEach(function(tag){%>
 							<a href="/list/all/<%=tag%>" class="ask_tag" ><strong class="ask_tag_strong"><%=tag%></a></strong></a>

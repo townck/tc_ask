@@ -7,7 +7,6 @@ var routes = require('./conf/routes.js')
 var session = require('express-session')
 var http = require('http')
 var partials = require('express-partials')
-
 var app = express()
 app.engine('.html', require('ejs').__express)
 app.set('views', __dirname + '/server/views')
@@ -20,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(session({ secret: "keyboard cat" }))
 app.use(express.static(path.join(__dirname, 'public')))
+
 
 routes(app)
 // catch 404 and forward to error handler
@@ -34,7 +34,8 @@ if (app.get('env') === 'development') {
         res.status(err.status || 500)
         res.render('error', {
             message: err.message,
-            error: err
+            error: err,
+            manage: {}
         })
     })
 }

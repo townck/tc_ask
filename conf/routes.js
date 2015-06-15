@@ -2,7 +2,10 @@
 var Users = require('../tools/mongodb.js').getCollection('users')
 	, getUid = require('../tools/tools.js').getUid
 	, Manage = require('../tools/mongodb.js').getCollection('manage')
-
+	, multipart = require('connect-multiparty')
+	, multipartMiddleware = multipart()
+	, path = require('path')
+	, fs = require('fs')
 	
 var posterList = [
 	'/images/av1.gif'
@@ -14,6 +17,23 @@ var posterList = [
 
 module.exports = function(app)
 {
+	app.post('/upload', multipartMiddleware, function(req, res) {
+		var obj = req.files.uploadImg
+	    var tmp_path = obj.path
+		var name = getUid(10)+obj.name.replace(/ /g, '_')  
+	    var new_path = "./public/images/upload/" + name
+		
+	    fs.rename(tmp_path,new_path,function(err){  
+	        if(err){  
+	           return res.json({err:err.toString()})
+	        }
+			
+			res.end(JSON.stringify({ name: name  }))
+//			res.end('true')
+	    })  
+	  // don't forget to delete all req.files when done
+	});
+
 	app.use(function(req, res, next)
 	{
 		if( !req.cookies._id ){
