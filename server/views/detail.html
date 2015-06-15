@@ -98,6 +98,10 @@
 								<div class="mod_discuss_box_text qyer_spam_text_filter">
 									<%-answer.content.replace(/<([^>]*)>/g, ' ').replace(/\n/g, '<br>')%>	
 								</div>
+								<%if(answer.image){%>
+									<br>
+									<img src="/images/upload/<%=answer.image%>" alt="">
+								<%}%>
 								<div class="mod_discuss_box_tool clearfix">
 									<div class="fr">
 										<div class="operate mr10 fl" style="display: none;">
@@ -130,6 +134,13 @@
 				<a name="questionanswer" id="questionanswer" style="margin-top: -150px; position: absolute;">&nbsp;</a>
 				<h4 class="fb f14 mt20 js_tmp">添加回答</h4>
 				<div class="mod_discuss clearfix mt10">
+					<span>
+						<input type="file" id="choosefile" name="uploadImg" accept="image/" style="width:0px;display:none">
+						<input id="jssubmit" type="button" class=" ui_button14" onclick="chooseFile()" name="" value="上传图片" style="margin: 0px 0px 5px 14px;">
+						<span id="upload_message" style="color:#007bae"></span>
+							
+					</span>
+					
 					<div class="mod_discuss_face ui_headPort" alt="6047093">
 						<a href="#" class="fl"><img src="<%=user.poster%>" width="80" height="80" alt="Vinner7"></a>
 					</div>
@@ -137,6 +148,8 @@
 						<div class="mod_discuss_cnt_triangle">
 						</div>
 						<form action="/answers/<%=doc._id%>" id="jsaddanswer"  method="post">
+							<div id="show_upload_img"></div>
+							<input type="hidden" name="image" id="upload_img" >
 							<input type="hidden" name="qid" id="answerqid" value="858432">
 							<div class="mod_discuss_speak">
 								<div class="mod_edittext">
@@ -216,4 +229,40 @@
 	}
 	else if( error )
 		alert('添加失败！！')
+		
+		
+	var AllImgExt=".jpg|.jpeg|.gif|.bmp|.png|"//全部图片格式类型 
+		
+	function chooseFile(){  
+	    document.getElementById("choosefile").click();
+	}  
+	
+	$('#choosefile').AjaxFileUpload({
+		action: "/upload",
+		onChange: function(filename) {
+			
+		},
+		onSubmit: function(filename) {
+			var fileExt = filename.substr(filename.lastIndexOf(".")).toLowerCase(); 
+			if(AllImgExt.indexOf(fileExt+"|")!=-1){
+				$('#upload_message').html('上传中。。。')
+				return true
+			}
+			else { 
+				$('#upload_message').html('上传失败')
+				alert("该文件类型不允许上传。请上传"+AllImgExt+"类型的文件，\n当前文件类型为"+fileExt); 
+				return false; 
+			} 
+		},
+		onComplete: function(filename, response) {
+			$('#upload_message').html('上传成功')
+			$('#show_upload_img').html('<img src="/images/upload/' + response.name + '">')
+			$('#upload_img').val(response.name)
+		}
+	})
+</script>
+
+
+<script>
+	
 </script>
