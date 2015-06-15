@@ -83,6 +83,10 @@
 			</h4>
 			<blockquote class="qyer_spam_text_filter">
 				${item.content.substring(0,100)}${item.content.length>=100?'...':''}
+				{if item.image}
+					<br>
+					<img src="/images/upload/${item.image}" alt="">
+				{/if}
 			</blockquote>
 			<div class="ask_item_main_item_list_tab">
 				{for tag in item.tag}
