@@ -8,11 +8,8 @@ var Users = require('../tools/mongodb.js').getCollection('users')
 	, fs = require('fs')
 	
 var posterList = [
-	'/images/av1.gif'
-	, '/images/av2.gif'
-	, '/images/av3.gif'
-	, '/images/av4.gif'
-	, '/images/av5.gif'
+	'/images/uface.jpg'
+	
 ]
 
 module.exports = function(app)
@@ -49,7 +46,7 @@ module.exports = function(app)
 		}
 		
 		if( req.session.admin ){
-			req.user.poster = '/images/av6.gif'
+			req.user.poster = '/images/adminlogo.jpg'
 			req.user.admin = true
 		}
 		
