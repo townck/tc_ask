@@ -170,7 +170,7 @@ router.post('/create', function(req, res)
 		{
 			req.body.user = req.user
 			
-			req.body._id = getUid(16)
+			req.body._id = getUid(8)
 			req.body.date = new Date
 			
 			Questions.insert(req.body, function(err)
