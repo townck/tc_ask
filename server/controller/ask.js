@@ -88,11 +88,12 @@ router.get(['/', '/search', '/list/:type', '/list/:type/:tag'], function(req, re
 			delete item.captcha
 		})
 		
+		if( req.query.jsoncallback )
+			return res.end(req.query.jsoncallback+ '('+ JSON.stringify(list)+ ')');
+		
 		if( isPage )
 			return res.json(list)
 		
-		if( req.query.jsoncallback )
-			res.end(req.query.jsoncallback+ '('+ JSON.stringify(list)+ ')');
 		
 		getSidebarData(function(data){
 			res.render('index', { manage: req.manage, list: list, sidebar: data, type: req.params.type, queryTag: req.params.tag, isQuery: !!req.query.q, user: req.user })
