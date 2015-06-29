@@ -58,6 +58,7 @@ router.get(['/', '/search', '/list/:type', '/list/:type/:tag'], function(req, re
 		, query = {}
 	
 	req.params.type = req.params.type || 'all'
+	var isPage = req.query.page === undefined ? false : true
 	var page = req.query.page ? parseInt(req.query.page) : 0
 	
 	if( req.params.type === 'all' )
@@ -86,8 +87,8 @@ router.get(['/', '/search', '/list/:type', '/list/:type/:tag'], function(req, re
 			delete item.email
 			delete item.captcha
 		})
-
-		if( page )
+		
+		if( isPage )
 			return res.json(list)
 		
 		getSidebarData(function(data){
