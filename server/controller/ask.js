@@ -104,17 +104,17 @@ router.get(['/', '/search', '/list/:type', '/list/:type/:tag'], function(req, re
 router.get('/sitemap.xml', function(req, res) {
 	
 	var sitemap = sm.createSitemap({
-        hostname: 'http://www.ask.townck.com',
+        hostname: 'http://ask.townck.com',
         cacheTime: 600000,
         urls: [
-            { url:'http://www.ask.townck.com', priority: 0.8, changefreq: 'always', lastmod: dateFormat(new Date(), 'yyyy-MM-dd') }
+            { url:'http://ask.townck.com', priority: 0.8, changefreq: 'always', lastmod: dateFormat(new Date(), 'yyyy-MM-dd') }
         ]
     })
 	
 	Questions.find({}).sort({ date: -1 }).limit(1000).toArray(function(err, datas)
 	{
 		datas.forEach(function(data){
-			sitemap.add({url: 'http://www.ask.townck.com/detail/'+data._id, changefreq: 'always', lastmod: dateFormat(data.date, 'yyyy-MM-dd')  })
+			sitemap.add({url: 'http://ask.townck.com/detail/'+data._id, changefreq: 'always', lastmod: dateFormat(data.date, 'yyyy-MM-dd')  })
 		})
 		
 		sitemap.toXML( function (xml) {
