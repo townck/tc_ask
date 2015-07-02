@@ -114,7 +114,7 @@ router.get('/sitemap.xml', function(req, res) {
 	Questions.find({}).sort({ date: -1 }).limit(1000).toArray(function(err, datas)
 	{
 		datas.forEach(function(data){
-			sitemap.add({url: 'http://www.ask.townck.com/question/'+data._id, changefreq: 'always', lastmod: dateFormat(data.date, 'yyyy-MM-dd')  })
+			sitemap.add({url: 'http://www.ask.townck.com/detail/'+data._id, changefreq: 'always', lastmod: dateFormat(data.date, 'yyyy-MM-dd')  })
 		})
 		
 		sitemap.toXML( function (xml) {
