@@ -11,7 +11,8 @@ var express = require('express')
 	, getDateAgo = require('../../tools/tools.js').getDateAgo
 	, ccap = require('ccap')()
 	, Manage = require('../../tools/mongodb.js').getCollection('manage')
-
+	, sm = require('sitemap')
+	
 function getSidebarData(done)
 {
 	Questions.find({}).sort({ answers: -1 }).limit(10).toArray(function(err, questions){
@@ -97,6 +98,29 @@ router.get(['/', '/search', '/list/:type', '/list/:type/:tag'], function(req, re
 		getSidebarData(function(data){
 			res.render('index', { manage: req.manage, list: list, sidebar: data, type: req.params.type, queryTag: req.params.tag, isQuery: !!req.query.q, user: req.user })
 		})
+	})
+})
+
+router.get('/sitemap.xml', function(req, res) {
+	
+	var sitemap = sm.createSitemap({
+        hostname: 'http://www.ask.townck.com',
+        cacheTime: 600000,
+        urls: [
+            { url:'http://www.ask.townck.com', priority: 0.8, changefreq: 'always', lastmod: dateFormat(new Date(), 'yyyy-MM-dd') }
+        ]
+    })
+	
+	Questions.find({}).sort({ date: -1 }).limit(1000).toArray(function(err, datas)
+	{
+		datas.forEach(function(data){
+			sitemap.add({url: 'http://www.ask.townck.com/question/'+data._id, changefreq: 'always', lastmod: dateFormat(data.date, 'yyyy-MM-dd')  })
+		})
+		
+		sitemap.toXML( function (xml) {
+            res.header('Content-Type', 'application/xml')
+            res.send(xml)
+        })
 	})
 })
 

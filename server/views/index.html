@@ -112,7 +112,6 @@
 	{/for}
 </textarea> 
 
-
 <script>
 	var page = 0
 	var data = <%-JSON.stringify(list).replace(/<([^>]*)>/g, ' ')%>
@@ -139,15 +138,18 @@
 			
 		})
 	})
-	
-	$.ajax({
-		dataType: 'jsonp'
-		,url:"http://ask.townck.com/?page=0"
-		, success: function(json){
-			console.log(json)
-		}
-		, error: function(err){
-			console.log(err)
-		} 
-	})
+//	
+//	$.ajax({
+//		dataType: 'jsonp'
+//		,url:"http://ask.townck.com/?page=0"
+//		, success: function(list){
+//			for( var i=0;i<list.length;i++ ){
+//				
+//			}
+//			console.log(json)
+//		}
+//		, error: function(err){
+//			console.log(err)
+//		} 
+//	})
 </script>
